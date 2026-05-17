@@ -33,15 +33,13 @@ if(system == "B") {
     filter(row == 1) |> 
     mutate(row = 4)
   
-  # adjust column positions
+  # adjust column positions to position two rows correctly
   df_buttons = bind_rows(df_buttons,
                          df_row_to_copy) |> 
     mutate(col = case_when(
-      row == 1 ~ col,
-      row == 2 ~ col,
-      row == 3 ~ col,
       row == 4 ~ col - 0.5,
       row == 5 ~ col - 1,
+      TRUE ~ col,
     ))
   
 }
