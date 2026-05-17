@@ -1,6 +1,6 @@
-## 5-row Chromatic Button Accordion Analysis from .musicxml files
+## 5-row Chromatic Button Accordion analysis using .musicxml files
 
-1. Export a `.musicxml` file from music software such as Musescore or Sibelius
+1. Export a `.musicxml` file from music software such as [Musescore](https://musescore.org/en/download) or [Sibelius](https://www.avid.com/sibelius)
 
 2. Place the `.musicxml` file into the `musicxml` folder
 
@@ -10,7 +10,7 @@
 
 ## Example .musicxml files
 
-Example `.musicxml` files are provided for two tunes:
+Example `.musicxml` files are provided for two tunes in the `musicxml` folder:
 
 Angus Macleod [https://thesession.org/tunes/13488](https://thesession.org/tunes/13488)
 
@@ -22,7 +22,7 @@ The darker the red markings around a button, the more frequently that note is pl
 
 The distance travelled between two adjacent buttons in the same row is taken to be '1 unit'.
 
-Below the chart, is a calculation for how far one travels across the buttons, in the order that they are played in the tune, using only the specified rows of buttons. This does not take into account any repeated sections within the tune.
+Under each chart is a calculation for how far one travels across the buttons, in the order that they are played in the tune, using only the specified rows of buttons. This does not take into account any repeated sections within the tune.
 
 The smaller the distance traveled using the stated rows suggests that those are the optimum rows to consider using when playing the tune.
 
