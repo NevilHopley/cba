@@ -4,7 +4,7 @@
 
 2. Place the `.musicxml` file into the `musicxml` folder
 
-3. Open `musicxml analysis.Rmd`
+3. Open `musicxml analysis.Rmd` using [RStudio Desktop](https://posit.co/download/rstudio-desktop) software running R.
 
 4. Run the code chunks to output a `.png` chart into the `charts` folder
 
