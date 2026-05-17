@@ -1,0 +1,15 @@
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+*.html
+.mscbackup
+
+.DS_Store
+charts/*.png
+charts/*.svg
+musicxml/*.musicxml
+musescore/
+
+!charts/.gitkeep
+!musicxml/.gitkeep
