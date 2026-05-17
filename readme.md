@@ -6,7 +6,9 @@
 
 3. Open `musicxml analysis.Rmd` using [RStudio Desktop](https://posit.co/download/rstudio-desktop) software running R.
 
-4. Run the code chunks to output a `.png` chart into the `charts` folder
+4. Select either `C` or `B` system keyboard layout.
+
+5. Run the code chunks to output a `.png` chart into the `charts` folder
 
 ## Example .musicxml files
 

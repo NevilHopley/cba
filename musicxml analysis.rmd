@@ -6,13 +6,45 @@ library(xml2)
 library(stringr)
 library(purrr)
 
+# declare keyboard system layout
+system = "C" # either "C" or "B"
+
 # load in button layout reference
 df_buttons = read.csv("reference/all_buttons.csv") |> 
   tidyr::replace_na(replace = list(accidental = "")) |> 
   mutate(note = paste0(letter, accidental),
          .keep = "unused") |> 
   # hide the buttons that are not really needed
-  filter_out(note %in% c("B#", "Cb", "E#", "Fb"))
+  filter_out(note %in% c("B#", "Cb", "E#", "Fb")) 
+
+# rearrange buttons if system is "B"
+if(system == "B") {
+  
+  # do initial rearranging of row order
+  df_buttons = df_buttons |> 
+    filter_out(row == 4) |> 
+    mutate(row = case_when(
+      row == 1 ~ 3,
+      row == 3 ~ 1,
+      TRUE ~ row))
+  
+  # duplicate rows 1 and 4
+  df_row_to_copy = df_buttons |> 
+    filter(row == 1) |> 
+    mutate(row = 4)
+  
+  # adjust column positions
+  df_buttons = bind_rows(df_buttons,
+                         df_row_to_copy) |> 
+    mutate(col = case_when(
+      row == 1 ~ col,
+      row == 2 ~ col,
+      row == 3 ~ col,
+      row == 4 ~ col - 0.5,
+      row == 5 ~ col - 1,
+    ))
+  
+}
 
 # list names of available musicxml file tunes, in the folder called musicxml
 available_musicxml = list.files(path = "musicxml") |> 
@@ -116,8 +148,11 @@ ggplot() +
   # put opposite colour text on the corresponding button colour
   scale_colour_manual(values = c("black" = "white", "white" = "black"),
                       guide = "none") +
-    scale_fill_identity() +
-  labs(title = music_xml,
+  scale_fill_identity() +
+  labs(title = paste0(music_xml,
+                      " (",
+                      system,
+                      ")"),
        caption = distance_text) +
   theme_void() +
   theme(axis.title.x = element_text(),
@@ -128,7 +163,10 @@ ggplot() +
 
 # save chart in folder called 'charts'
 ggsave(filename = paste0("charts/",
-                         music_xml,
+                         paste0(music_xml,
+                                " (",
+                                system,
+                                " system)"),
                          ".png"),
        width = 5,
        height = 16,
